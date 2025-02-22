@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  s8-sensor:
+    build:
+      context: ./s8
+      dockerfile: s8.Dockerfile
+    devices:
+      - ${SERIAL_PORT}:${SERIAL_PORT}  # Direct access to serial port
+    ports:
+      - "${PROMETHEUS_PORT}:${PROMETHEUS_PORT}"  # Prometheus metrics port
+    env_file:
+      - .env  # Load all environment variables from .env file
+    volumes:
+      - ./s8/s8.py:/app/s8.py  # Mount for development
+    restart: always
+    privileged: true  # Required for serial port access
+    extra_hosts:
+      - "host.docker.internal:host-gateway"  # Enable host.docker.internal on Linux
+    networks:
+      - sensor-network
+
+networks:
+  sensor-network:
+    driver: bridge

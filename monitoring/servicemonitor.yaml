@@ -1,0 +1,20 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: s8-sensor
+  namespace: kube-prometheus-stack
+  labels:
+    app: s8-sensor
+    prometheus: prometheus
+spec:
+  selector:
+    matchLabels:
+      app: s8-sensor
+  namespaceSelector:
+    matchNames:
+      - kube-prometheus-stack
+  endpoints:
+    - port: metrics
+      interval: 10s
+      path: /metrics
+      targetPort: 9105
