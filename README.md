@@ -108,7 +108,22 @@ Image source: http://co2meters.com/Documentation/AppNotes/AN168-S8-raspberry-pi-
 3. **Monitoring**
    - Access MQTT messages: Use any MQTT client to subscribe to the configured topic
    - View Prometheus metrics: Navigate to the Prometheus web interface
-   - Optional: Connect Grafana for visualization
+   - Grafana Dashboard:
+     - A pre-configured dashboard is available in `monitoring/grafana-dashboard.json`
+     - Dashboard features:
+       - Current CO2 Level Gauge with color-coded thresholds (green < 1000ppm, yellow < 2000ppm, orange < 5000ppm, red >= 5000ppm)
+       - CO2 Level History Graph showing trends over time
+       - Current CO2 Classification Status (GREAT, NORMAL, SLEEPY, WARNING, ALERT)
+       - CO2 Alerts Panel tracking alert history by severity
+     - To import the dashboard:
+       1. Access your Grafana instance
+       2. Click the "+" icon in the sidebar and choose "Import"
+       3. Upload the `grafana-dashboard.json` file or copy its contents
+       4. Select your Prometheus data source
+       5. The dashboard will auto-refresh every 10 seconds
+    
+    
+    ![Dashboard](dashboard.png)
 
 ## Application Details (s8.py)
 
