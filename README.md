@@ -13,7 +13,7 @@ This project integrates the SenseAir S8 CO2 sensor with MQTT and Prometheus for 
 
 Hook up the Senseair S8 to your Raspberry Pi using the following schematic:
 
-![Connection schematic](connection_schematic.PNG "Connection schematic")
+![Connection schematic](connection_schematic.PNG)
 
 Image source: http://co2meters.com/Documentation/AppNotes/AN168-S8-raspberry-pi-uart.pdf
 
