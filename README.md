@@ -25,10 +25,11 @@ Image source: http://co2meters.com/Documentation/AppNotes/AN168-S8-raspberry-pi-
 - Prometheus
 
 ### System Requirements
-- Enable UART on Raspberry Pi by modifying `/boot/firmware/config.txt`:
+- Enable UART and disable bluetooth on Raspberry Pi by modifying `/boot/firmware/config.txt`:
   ```
   enable_uart=1
   dtoverlay=pi3-miniuart-bt
+  dtoverlay=pi3-disable-bt
   ```
 - Reboot
 
